@@ -8,6 +8,9 @@ class Category(MPTTModel):
     slug = models.SlugField(max_length=100)
     parent = TreeForeignKey('self', related_name='children', on_delete=models.SET_NULL, null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
     class MPTTMeta:
         order_insertion_by = ['name']
 
