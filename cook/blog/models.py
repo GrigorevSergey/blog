@@ -19,6 +19,9 @@ class Tag(MPTTModel):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
