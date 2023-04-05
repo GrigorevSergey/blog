@@ -10,5 +10,6 @@ class PostListView(ListView):
     def get_queryset(self):
         return Post.objects.filter(category__slug=self.kwargs.get('slug'))
 
+
 def home(request):
     return render(request, 'base.html')
