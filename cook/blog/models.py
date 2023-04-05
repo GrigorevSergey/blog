@@ -16,8 +16,8 @@ class Category(MPTTModel):
 
 
 class Tag(MPTTModel):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100)
+    name = models.CharField(max_length=100,  blank=True)
+    slug = models.SlugField(max_length=100,  blank=True)
 
     def __str__(self):
         return self.name
@@ -26,7 +26,7 @@ class Tag(MPTTModel):
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='articles/')
+    image = models.ImageField(upload_to='articles/', blank=True)
     text = models.TextField()
     category = models.ForeignKey(Category, related_name='post', on_delete=models.SET_NULL, null=True)
     tags = models.ManyToManyField(Tag, related_name='post')
